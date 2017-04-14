@@ -8,7 +8,7 @@ MODEL_DATA		  = "linear_model.pickle"
 SAMPLING_NUMBER	  = 50000
 
 
-print('Loading data_labels pairs...')
+print('Loading data_score pairs...')
 raw = pd.read_csv(DATA_LABELS_FILE)
 
 
