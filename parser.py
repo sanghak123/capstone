@@ -79,3 +79,23 @@ class InteractionBuilder:
             return None
 
 
+class InteractionCountBuilder:
+    
+    def __init__(self, user_dict, item_dict):
+        self.user_dict = user_dict
+        self.item_dict = item_dict
+    
+    def build_interaction(self, str_inter, names):
+        if int(str_inter[names['item_id']]) in self.item_dict and int(str_inter[names['user_id']]) in self.user_dict:
+            return InteractionCount(
+                self.user_dict[int(str_inter[names['user_id']])],
+                self.item_dict[int(str_inter[names['item_id']])],
+                int(str_inter[names["0"]]),
+                int(str_inter[names["1"]]),
+                int(str_inter[names["2"]]),
+                int(str_inter[names["3"]]),
+                int(str_inter[names["4"]]),
+                int(str_inter[names["5"]])
+            )
+        else:
+            return None

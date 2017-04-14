@@ -53,6 +53,7 @@ with open('interactions_count.csv', 'w') as csvFile:
                             interaction_dict[item_id][user_id]['3'], interaction_dict[item_id][user_id]['4'],
                             interaction_dict[item_id][user_id]['5']])
 
+'''
 with open(USERS_FILE, 'r') as users_file:
     with open(SAMPLE_USER_FILE, 'w') as sample_users_file:
         print("Make Sample User File")
@@ -136,3 +137,4 @@ with open(TARGET_ITEMS, 'r') as target_items:
                 sample_target_items.write("\t".join(row)+"\n")
             if i % 500000 == 0:
                 print(str(i)+' lines have been read.')
+'''
