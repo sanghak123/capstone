@@ -6,6 +6,7 @@ by Daniel Kohlsdorf
 '''
 
 from model import * 
+import csv
 
 
 def is_header(line):
@@ -38,6 +39,25 @@ def select(from_file, where, toObject, index):
         if i % 100000 == 0:
             print("... reading line " + str(i) + " from file " + from_file)
     return(header, data)        
+
+
+def select_inter_counts_and_write(from_file, to_file, where, toObject, titles):
+    writer = csv.writer(open(to_file, 'w'), delimiter=',')
+    writer.writerow(titles)
+
+    i = 0
+    for line in open(from_file):
+        if is_header(line):
+            header = process_header(line.strip().split("\t"))
+        else:
+            cmp = line.strip().split("\t")
+            if where(cmp):
+                obj = toObject(cmp, header)
+                if obj != None:
+                    writer.writerow(obj.features()+[obj.score()])
+        i += 1
+        if i % 100000 == 0:
+            print("... reading line " + str(i) + " from file " + from_file + " and writing")
 
 
 def build_user(str_user, names):
